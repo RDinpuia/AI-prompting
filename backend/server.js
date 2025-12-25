@@ -1,27 +1,20 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+
+const expenseRoutes = require("./routes/expenses");
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// TEMP database
-let expenses = [];
+// Routes
+app.use("/api/expenses", expenseRoutes);
 
-// GET expenses
-app.get("/api/expenses", (req, res) => {
-  res.json(expenses);
-});
-
-// POST expense
-app.post("/api/expenses", (req, res) => {
-  const newExpense = req.body;
-  expenses.push(newExpense);
-  res.status(201).json(newExpense);
-});
-
-const PORT = 5000;
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
