@@ -40,7 +40,7 @@ body {
 /* Form - single horizontal row */
 form {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.3fr auto;
+  grid-template-columns: 2fr 1.5fr 1.1fr auto;
   gap: 10px;
   margin-bottom: 24px;
   padding: 14px;
